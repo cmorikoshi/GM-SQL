@@ -1,0 +1,6 @@
+C:\D_FILES\SGA_NEW\GMSQL\GM_MODEL\bin\Debug\GM_MODEL.dll
+C:\D_FILES\SGA_NEW\GMSQL\GM_MODEL\bin\Debug\GM_MODEL.pdb
+C:\D_FILES\SGA_NEW\GMSQL\GM_MODEL\obj\Debug\GM_MODEL.csproj.AssemblyReference.cache
+C:\D_FILES\SGA_NEW\GMSQL\GM_MODEL\obj\Debug\GM_MODEL.csproj.CoreCompileInputs.cache
+C:\D_FILES\SGA_NEW\GMSQL\GM_MODEL\obj\Debug\GM_MODEL.dll
+C:\D_FILES\SGA_NEW\GMSQL\GM_MODEL\obj\Debug\GM_MODEL.pdb

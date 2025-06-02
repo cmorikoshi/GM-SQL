@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A585F4B1-9F7F-4500-9FCD-03932FC33D41}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CMSQL_APP</RootNamespace>
+    <AssemblyName>CMSQL_APP</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TELA_MENU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TELA_MENU.Designer.cs">
+      <DependentUpon>TELA_MENU.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TELA_MENU.resx">
+      <DependentUpon>TELA_MENU.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OrdemPagamento1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telaChave06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unidade48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\produto48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SairSetaDireita48x48.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DELTA DUCON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\POWDER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nfe32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nfe48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MAISMENOS.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Movimentacao.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RELATG01.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CALENDARIO.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CANAL.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\COMPRAAVULSA.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\QUADROAVISO.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAPACETE.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LISTA.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NOTAFISCAL.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imprimir.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tc_Relatorio.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ARQUIVOAZUL.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LIQUIDACHEQUE.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PASTAMOVIMENTO.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FICHARIO.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PARAFUSO.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ETIQUETA.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GRAFICO.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAMINHAO.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\APAGIADIPAM.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DESAPROVA.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TC_Auxiliar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMSQL_DLL\CMSQL_DLL.csproj">
+      <Project>{6b9a8d37-86a4-417c-9114-afc585f3bd41}</Project>
+      <Name>CMSQL_DLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

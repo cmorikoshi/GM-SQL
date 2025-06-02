@@ -1,0 +1,9 @@
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\bin\Debug\GM_BLL.dll
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\bin\Debug\GM_BLL.pdb
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\bin\Debug\GM_MODEL.dll
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\bin\Debug\GM_MODEL.pdb
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\obj\Debug\GM_BLL.csproj.AssemblyReference.cache
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\obj\Debug\GM_BLL.csproj.CoreCompileInputs.cache
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\obj\Debug\GM_BLL.csproj.CopyComplete
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\obj\Debug\GM_BLL.dll
+C:\D_FILES\SGA_NEW\GMSQL\GM_BLL\obj\Debug\GM_BLL.pdb
