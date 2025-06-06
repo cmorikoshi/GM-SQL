@@ -268,5 +268,33 @@ namespace GM_BLL
         }
 
         #endregion RETURN METHODS - CM0700
+
+
+        #region REPORT METHODS
+
+        public DataTable RetornarListaComponentePorProduto(string v_codequ, string v_select)
+        {
+            string Query = "SELECT A.C_CODEQU, A.C_CODMAT, A.C_QTDMAT, A.C_UNIMED, A.C_NUMDES, A.C_ITEDES, A.C_SEQEQU, B.C_DESMAT, B.C_DISQTD FROM CM0700 A, CM0100 B " +
+                           "WHERE A.C_CODEQU = '" + v_codequ + "' AND A.C_CODMAT = B.C_CODMAT " + v_select + "  ORDER BY A.C_SEQEQU";
+            SqlCommand command = new SqlCommand(Query, GetConnection());
+            SqlConnection connection = new SqlConnection();
+
+            try
+            {
+                connection = GetConnection();
+
+                DataTable dTable = new DataTable("retornarListaMateriais");
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(dTable);
+
+                return dTable;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        #endregion REPORT METHODS
     }
 }

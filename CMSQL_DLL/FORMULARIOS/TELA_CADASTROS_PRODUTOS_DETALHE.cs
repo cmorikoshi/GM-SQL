@@ -239,7 +239,7 @@ namespace CMSQL_DLL.FORMULARIOS
             ExcluirItemListaMateriais();
             RetornarListaMateriaisCM0700();
 
-            if (SF_CM0700A.RowCount >= linhaSelecionada)
+            if (SF_CM0700A.RowCount >= linhaSelecionada && linhaSelecionada > 0)
             {
                 SF_CM0700A.Rows[linhaSelecionada - 1].Selected = true;
             }
@@ -249,12 +249,19 @@ namespace CMSQL_DLL.FORMULARIOS
         private void btnImportaLista_Click(object sender, EventArgs e)
         {
             TELA_IMPORTACAO_OS_PRODUTO importaOSProduto = new TELA_IMPORTACAO_OS_PRODUTO();
+            importaOSProduto.v_codequ = c_codequ.Text;
             importaOSProduto.ShowDialog();
+
+            RetornarListaMateriaisCM0700();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-
+            TELA_FORMA_IMPRESSAO formaImpressao = new TELA_FORMA_IMPRESSAO();
+            formaImpressao.v_codequ = c_codequ.Text;
+            formaImpressao.v_descos = c_desequ.Text;
+            formaImpressao.v_numdes = c_numdes.Text;
+            formaImpressao.ShowDialog();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

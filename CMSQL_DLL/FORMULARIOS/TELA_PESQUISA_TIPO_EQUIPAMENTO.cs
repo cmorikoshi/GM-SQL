@@ -55,12 +55,12 @@ namespace CMSQL_DLL.FORMULARIOS
             {
                 if(rbCodigo.Checked == true)
                 {
-                    v_select = " C_CODMAT LIKE '%" + c_codmat1.Text + "%' ORDER BY C_DESMAT";
+                    v_select = " C_CODMAT LIKE '" + c_codmat1.Text + "%' AND SUBSTRING(C_DESMAT, 1, 10) != '(OBSOLETO)' ORDER BY C_DESMAT";
                     SF_TD0100B.DataSource = cm0100bll.RetornarMaterialPesquisa(v_select);
                 }
                 if (rbDescricao.Checked == true)
                 {
-                    v_select = " C_DESMAT LIKE '%" + c_desmat1.Text + "%' ORDER BY C_DESMAT";
+                    v_select = " C_DESMAT LIKE '" + c_desmat1.Text + "%' AND SUBSTRING(C_DESMAT, 1, 10) != '(OBSOLETO)' ORDER BY C_DESMAT";
                     SF_TD0100B.DataSource = cm0100bll.RetornarMaterialPesquisa(v_select);
                 }
             }
@@ -78,7 +78,7 @@ namespace CMSQL_DLL.FORMULARIOS
         #region BUTTONS
         private void c_codmat1_TextChanged(object sender, EventArgs e)
         {
-            if (c_codmat1.Text.Count(c => Char.IsLetterOrDigit(c)) > 3)
+            if (c_codmat1.Text.Count(c => Char.IsLetterOrDigit(c)) > 4)
             {
                 RetornarComponentes();
             }
@@ -86,7 +86,7 @@ namespace CMSQL_DLL.FORMULARIOS
 
         private void c_desmat1_TextChanged(object sender, EventArgs e)
         {
-            if (c_desmat1.Text.Count(c => Char.IsLetterOrDigit(c)) > 3)
+            if (c_desmat1.Text.Count(c => Char.IsLetterOrDigit(c)) > 5)
             {
                 RetornarComponentes();
             }

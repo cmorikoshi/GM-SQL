@@ -21,6 +21,12 @@ namespace CMSQL_DLL.FORMULARIOS
         OS0300BLL os0300bll = new OS0300BLL();
         OS0300MODEL os0300model = new OS0300MODEL();
 
+        OS0500BLL os0500bll = new OS0500BLL();
+        OS0500MODEL os0500model = new OS0500MODEL();
+
+        CM0700BLL cm0700bll = new CM0700BLL();
+        CM0700MODEL cm0700model = new CM0700MODEL();
+
 
         #region VARIÁVEIS
 
@@ -38,6 +44,13 @@ namespace CMSQL_DLL.FORMULARIOS
             set { V_CODMAT = value; }
         }
 
+        private string V_CODEQU;
+        public string v_codequ
+        {
+            get { return V_CODEQU; }
+            set { V_CODEQU = value; }
+        }
+
         private string V_USUARIO;
         public string v_usuario
         {
@@ -45,8 +58,8 @@ namespace CMSQL_DLL.FORMULARIOS
             set { V_USUARIO = value; }
         }
 
-
         #endregion VARIÁVEIS
+
 
         public TELA_IMPORTACAO_OS_PRODUTO()
         {
@@ -57,33 +70,17 @@ namespace CMSQL_DLL.FORMULARIOS
         {
 
 
+
         }
 
         #region RETURN METHODS
-        public void RetornarListaMateriaisCM0700()
-        {
-            string v_select = null;
-            try
-            {
-                if (rbPorCliente.Checked == true)
-                {
-                    v_select = " C_CODCLI = '" + c_codcli.Text + "' ";
-                }
-                if (rbPorOS.Checked == true)
-                {
-                    v_select = " C_NUMOSE = '" + c_numose.Text + "' ";
-                }
-                if (rbPorJOB.Checked == true)
-                {
-                    string v_numjob = "" + c_anojob.Text + "" + c_numjob1.Text + "";
-                    v_select = " (C_ANOJOB+C_NUMJOB) = '" + v_numjob + "' ";
-                }
-                SF_OS0300A.DataSource = os0300bll.RetornarOS0300LMC(v_select);
-            }
-            catch (Exception ex)
-            {
 
-                throw new Exception(ex.Message);
+        public void RetornarListaMateriaisOS0500()
+        {
+            if (SF_OS0300A.SelectedRows.Count > 0)
+            {
+                string v_numose2 = c_numose1.Text;
+                SF_OS0500B.DataSource = os0500bll.RetornarListaOS0500LMC(v_numose2);
             }
         }
 
@@ -117,7 +114,7 @@ namespace CMSQL_DLL.FORMULARIOS
             if (SF_OS0300A.Rows.Count > 0)
             {
                 string v_select = " C_NUMOSE = '00000'";
-                SF_OS0300A.DataSource = os0300bll.RetornarOS0300LMC(v_select); 
+                SF_OS0300A.DataSource = os0300bll.RetornarOS0300LMC(v_select);
                 SF_OS0300A.Refresh();
             }
             c_numjob.Text = "";
@@ -129,6 +126,31 @@ namespace CMSQL_DLL.FORMULARIOS
             c_qtdeos.Text = "";
         }
 
+        public void InserirListaProdutosCM0700()
+        {
+            try
+            {
+                foreach (DataGridViewRow row in SF_OS0500B.Rows)
+                {
+                    cm0700model.C_CODEQU = v_codequ;
+                    cm0700model.C_CODMAT = row.Cells["C_CODEMP"].Value.ToString();
+                    cm0700model.C_QTDMAT = Convert.ToDecimal(row.Cells["C_QTDEMP"].Value.ToString());
+                    cm0700model.C_UNIMED = row.Cells["C_UNIEMP"].Value.ToString();
+                    cm0700model.C_NUMDES = "";
+                    cm0700model.C_ITEDES = "";
+                    cm0700model.C_SEQEQU = cm0700bll.RetornarUltSequenciaListaMaterialCM0700(v_codequ);
+
+                    cm0700bll.InserirListaCadastroMateriaisCM0700(cm0700model);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
         #endregion RETURN METHODS
 
         #region BUTTONS
@@ -136,6 +158,20 @@ namespace CMSQL_DLL.FORMULARIOS
         private void btnCancela_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnImportaLista_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InserirListaProdutosCM0700();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         #endregion BUTTONS
@@ -188,9 +224,15 @@ namespace CMSQL_DLL.FORMULARIOS
         {
             try
             {
-                if (c_numose.Text.Length == 5)
+                string v_select = null;
+                if (rbPorOS.Checked == true)
                 {
-                    RetornarListaMateriaisCM0700();
+                    if (c_numose.Text.Length == 5)
+                    {
+
+                        v_select = " C_NUMOSE = '" + c_numose.Text + "' ORDER BY C_NUMOSE DESC";
+                        SF_OS0300A.DataSource = os0300bll.RetornarOS0300LMC(v_select);
+                    }
                 }
             }
             catch (Exception ex)
@@ -203,12 +245,16 @@ namespace CMSQL_DLL.FORMULARIOS
         {
             try
             {
+                string v_select = null;
                 if (c_codcli.Text.Length == 6)
                 {
-
-                    RetornarListaMateriaisCM0700();
-
+                    if (rbPorCliente.Checked == true)
+                    {
+                        v_select = " C_CODCLI = '" + c_codcli.Text + "'";
+                        SF_OS0300A.DataSource = os0300bll.RetornarOS0300LMC(v_select);
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -241,9 +287,15 @@ namespace CMSQL_DLL.FORMULARIOS
         {
             try
             {
+                string v_select = null;
                 if (c_numjob1.Text.Length == 5)
                 {
-                    RetornarListaMateriaisCM0700();
+                    if (rbPorJOB.Checked == true)
+                    {
+                        string v_numjob = "" + c_anojob.Text + "" + c_numjob1.Text + "";
+                        v_select = " (C_ANOJOB+C_NUMJOB) = '" + v_numjob + "'";
+                        SF_OS0300A.DataSource = os0300bll.RetornarOS0300LMC(v_select);
+                    }
                 }
             }
             catch (Exception ex)
@@ -259,7 +311,20 @@ namespace CMSQL_DLL.FORMULARIOS
             {
                 c_numose1.Text = SF_OS0300A.CurrentRow.Cells["C_NUMOSE2"].Value.ToString();
                 RetornarDadosInformacoesOS();
+            }
 
+        }
+
+        private void c_numose1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                RetornarListaMateriaisOS0500();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
             }
 
         }

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsListaComponentesProduto" targetNamespace="http://tempuri.org/dsListaComponentesProduto.xsd" xmlns:mstns="http://tempuri.org/dsListaComponentesProduto.xsd" xmlns="http://tempuri.org/dsListaComponentesProduto.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SGASERVERConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SGASERVERConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CMSQL_DLL.Properties.Settings.GlobalReference.Default.SGASERVERConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtListaOSCM0700TableAdapter" GeneratorDataComponentClassName="dtListaOSCM0700TableAdapter" Name="dtListaOSCM0700" UserDataComponentName="dtListaOSCM0700TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SGASERVERConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CM0700.C_CODEQU, CM0700.C_CODMAT, CM0700.C_QTDMAT, CM0700.C_UNIMED, CM0700.C_NUMDES, CM0700.C_ITEDES, CM0700.C_SEQEQU, CM0100.C_DESMAT, CM0100.C_DISQTD
+FROM            CM0700 INNER JOIN
+                         CM0100 ON CM0700.C_CODMAT = CM0100.C_CODMAT</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="C_CODEQU" DataSetColumn="C_CODEQU" />
+              <Mapping SourceColumn="C_CODMAT" DataSetColumn="C_CODMAT" />
+              <Mapping SourceColumn="C_QTDMAT" DataSetColumn="C_QTDMAT" />
+              <Mapping SourceColumn="C_UNIMED" DataSetColumn="C_UNIMED" />
+              <Mapping SourceColumn="C_NUMDES" DataSetColumn="C_NUMDES" />
+              <Mapping SourceColumn="C_ITEDES" DataSetColumn="C_ITEDES" />
+              <Mapping SourceColumn="C_SEQEQU" DataSetColumn="C_SEQEQU" />
+              <Mapping SourceColumn="C_DESMAT" DataSetColumn="C_DESMAT" />
+              <Mapping SourceColumn="C_DISQTD" DataSetColumn="C_DISQTD" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsListaComponentesProduto" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsListaComponentesProduto" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsListaComponentesProduto">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtListaOSCM0700" msprop:Generator_RowClassName="dtListaOSCM0700Row" msprop:Generator_RowEvHandlerName="dtListaOSCM0700RowChangeEventHandler" msprop:Generator_RowDeletedName="dtListaOSCM0700RowDeleted" msprop:Generator_RowDeletingName="dtListaOSCM0700RowDeleting" msprop:Generator_RowEvArgName="dtListaOSCM0700RowChangeEvent" msprop:Generator_TablePropName="dtListaOSCM0700" msprop:Generator_RowChangedName="dtListaOSCM0700RowChanged" msprop:Generator_UserTableName="dtListaOSCM0700" msprop:Generator_RowChangingName="dtListaOSCM0700RowChanging" msprop:Generator_TableClassName="dtListaOSCM0700DataTable" msprop:Generator_TableVarName="tabledtListaOSCM0700">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="C_CODEQU" msprop:Generator_UserColumnName="C_CODEQU" msprop:Generator_ColumnPropNameInTable="C_CODEQUColumn" msprop:Generator_ColumnPropNameInRow="C_CODEQU" msprop:Generator_ColumnVarNameInTable="columnC_CODEQU">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_CODMAT" msprop:Generator_UserColumnName="C_CODMAT" msprop:Generator_ColumnPropNameInTable="C_CODMATColumn" msprop:Generator_ColumnPropNameInRow="C_CODMAT" msprop:Generator_ColumnVarNameInTable="columnC_CODMAT">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_QTDMAT" msprop:Generator_UserColumnName="C_QTDMAT" msprop:Generator_ColumnPropNameInTable="C_QTDMATColumn" msprop:Generator_ColumnPropNameInRow="C_QTDMAT" msprop:Generator_ColumnVarNameInTable="columnC_QTDMAT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="C_UNIMED" msprop:Generator_UserColumnName="C_UNIMED" msprop:Generator_ColumnPropNameInTable="C_UNIMEDColumn" msprop:Generator_ColumnPropNameInRow="C_UNIMED" msprop:Generator_ColumnVarNameInTable="columnC_UNIMED" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_NUMDES" msprop:Generator_UserColumnName="C_NUMDES" msprop:Generator_ColumnPropNameInTable="C_NUMDESColumn" msprop:Generator_ColumnPropNameInRow="C_NUMDES" msprop:Generator_ColumnVarNameInTable="columnC_NUMDES" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="26" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_ITEDES" msprop:Generator_UserColumnName="C_ITEDES" msprop:Generator_ColumnPropNameInTable="C_ITEDESColumn" msprop:Generator_ColumnPropNameInRow="C_ITEDES" msprop:Generator_ColumnVarNameInTable="columnC_ITEDES" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_SEQEQU" msprop:Generator_UserColumnName="C_SEQEQU" msprop:Generator_ColumnPropNameInTable="C_SEQEQUColumn" msprop:Generator_ColumnPropNameInRow="C_SEQEQU" msprop:Generator_ColumnVarNameInTable="columnC_SEQEQU">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_DESMAT" msprop:Generator_UserColumnName="C_DESMAT" msprop:Generator_ColumnPropNameInTable="C_DESMATColumn" msprop:Generator_ColumnPropNameInRow="C_DESMAT" msprop:Generator_ColumnVarNameInTable="columnC_DESMAT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="171" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_DISQTD" msprop:Generator_ColumnPropNameInRow="C_DISQTD" msprop:Generator_ColumnPropNameInTable="C_DISQTDColumn" msprop:Generator_ColumnVarNameInTable="columnC_DISQTD" msprop:Generator_UserColumnName="C_DISQTD" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:dtListaOSCM0700" />
+      <xs:field xpath="mstns:C_CODEQU" />
+      <xs:field xpath="mstns:C_SEQEQU" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

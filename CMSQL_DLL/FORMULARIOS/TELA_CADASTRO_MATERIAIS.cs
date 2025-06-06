@@ -53,7 +53,7 @@ namespace CMSQL_DLL.FORMULARIOS
         {
             progressBar1.Style = ProgressBarStyle.Marquee; // Animação contínua
             progressBar1.Visible = false; // Inicia invisível
-            
+
         }
 
         #region METHODS
@@ -107,9 +107,37 @@ namespace CMSQL_DLL.FORMULARIOS
             }
         }
 
-        private  void ExecutarOperacaoAssincrona()
+        private void ExecutarOperacaoAssincrona()
         {
-             Task.Delay(2000); // Simula operação de 2 segundos
+            Task.Delay(2000); // Simula operação de 2 segundos
+        }
+
+        public void AtualizarFormulario()
+        {
+            string v_select = null;
+            try
+            {
+                if (rbCodigo.Checked == true)
+                {
+                    v_select = " C_CODMAT LIKE '" + txtCodmat.Text + "%' Order BY C_DESMAT DESC";
+                    SF_CM0100A.DataSource = cm0100bll.RetornarMaterialComboBox(v_select);
+                }
+                if (rbDescricao.Checked == true)
+                {
+                    v_select = " C_DESMAT LIKE '" + txtDesMat.Text + "%' Order BY C_DESMAT DESC";
+                    SF_CM0100A.DataSource = cm0100bll.RetornarMaterialComboBox(v_select);
+                }
+                if (rbPalavraChave.Checked == true)
+                {
+                    v_select = " C_CHAPES = '" + cbPalavraChave.Text + "' Order BY C_DESMAT DESC";
+                    SF_CM0100A.DataSource = cm0100bll.RetornarMaterialComboBox(v_select);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         #endregion LOADING METHODS
@@ -138,165 +166,166 @@ namespace CMSQL_DLL.FORMULARIOS
                 progressBar1.Visible = false;
             }
 
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (SF_CM0100A.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Favor selecionar um item para continuar!!");
+                return;
             }
 
-            private void btnAlterar_Click(object sender, EventArgs e)
+            int linhaSelecionada = SF_CM0100A.CurrentRow.Index;
+
+            TELA_CADASTRO_MATERIAIS_DETALHE cadastroMateriaisDetalhe = new TELA_CADASTRO_MATERIAIS_DETALHE();
+            cadastroMateriaisDetalhe.operacao = Util.Operacao.Alteracao;
+            cadastroMateriaisDetalhe.v_codmat = SF_CM0100A.CurrentRow.Cells["C_CODMAT"].Value.ToString();
+            cadastroMateriaisDetalhe.v_usuario = v_usuario;
+            cadastroMateriaisDetalhe.ShowDialog();
+
+            AtualizarFormulario();
+
+            if (SF_CM0100A.RowCount > 0)
             {
-                if (SF_CM0100A.SelectedRows.Count == 0)
+                if (SF_CM0100A.RowCount >= linhaSelecionada)
                 {
-                    MessageBox.Show("Favor selecionar um item para continuar!!");
-                    return;
+                    SF_CM0100A.CurrentCell = SF_CM0100A.Rows[linhaSelecionada].Cells[0];
                 }
-
-                int linhaSelecionada = SF_CM0100A.CurrentRow.Index;
-
-                TELA_CADASTRO_MATERIAIS_DETALHE cadastroMateriaisDetalhe = new TELA_CADASTRO_MATERIAIS_DETALHE();
-                cadastroMateriaisDetalhe.operacao = Util.Operacao.Alteracao;
-                cadastroMateriaisDetalhe.v_codmat = SF_CM0100A.CurrentRow.Cells["C_CODMAT"].Value.ToString();
-                cadastroMateriaisDetalhe.v_usuario = v_usuario;
-                cadastroMateriaisDetalhe.ShowDialog();
-
-                if (SF_CM0100A.RowCount > 0)
+                else
                 {
-                    if (SF_CM0100A.RowCount >= linhaSelecionada)
+                    SF_CM0100A.CurrentCell = SF_CM0100A.Rows[linhaSelecionada - 1].Cells[0];
+                }
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnPesqMaterial_Click(object sender, EventArgs e)
+        {
+            string v_select = null;
+            try
+            {
+                if (rbCodigo.Checked == true)
+                {
+                    if (txtCodmat.Text.Count(c => Char.IsLetterOrDigit(c)) < 4)
                     {
-                        SF_CM0100A.CurrentCell = SF_CM0100A.Rows[linhaSelecionada].Cells[0];
+                        MessageBox.Show("Favor inserir Código de Material!!!");
+                        return;
                     }
                     else
                     {
-                        SF_CM0100A.CurrentCell = SF_CM0100A.Rows[linhaSelecionada - 1].Cells[0];
-                    }
-                }
-            }
-
-            private void btnExcluir_Click(object sender, EventArgs e)
-            {
-
-            }
-            private void btnPesqMaterial_Click(object sender, EventArgs e)
-            {
-                string v_select = null;
-                try
-                {
-                    if (rbCodigo.Checked == true)
-                    {
-                        if (txtCodmat.Text.Count(c => Char.IsLetterOrDigit(c)) < 3)
-                        {
-                            MessageBox.Show("Favor inserir Código de Material!!!");
-                            return;
-                        }
-                        else
-                        {
-                            v_select = " C_CODMAT LIKE '%" + txtCodmat.Text + "%' Order BY C_DESMAT DESC";
-                            SF_CM0100A.DataSource = cm0100bll.RetornarMaterialComboBox(v_select);
-                        }
-                    }
-                    if (rbDescricao.Checked == true)
-                    {
-                        if (txtDesMat.Text.Count(c => Char.IsLetterOrDigit(c)) < 3)
-                        {
-                            MessageBox.Show("Favor inserir Descrição do Material!!!!");
-                            return;
-                        }
-                        else
-                        {
-                            v_select = " C_DESMAT LIKE '%" + txtDesMat.Text + "%' Order BY C_DESMAT DESC";
-                            SF_CM0100A.DataSource = cm0100bll.RetornarMaterialComboBox(v_select);
-                        }
-                    }
-                    if (rbPalavraChave.Checked == true)
-                    {
-                        v_select = " C_CHAPES = '" + cbPalavraChave.Text + "' Order BY C_DESMAT DESC";
+                        v_select = " C_CODMAT LIKE '" + txtCodmat.Text + "%' Order BY C_DESMAT DESC";
                         SF_CM0100A.DataSource = cm0100bll.RetornarMaterialComboBox(v_select);
-                        if (cbPalavraChave.Text.Count(c => Char.IsLetterOrDigit(c)) < 2)
-                        {
-                            MessageBox.Show("Favor selecinar uma palavra chave para continuar!!!!");
-                            return;
-                        }
-
                     }
                 }
-                catch (Exception ex)
+                if (rbDescricao.Checked == true)
                 {
+                    if (txtDesMat.Text.Count(c => Char.IsLetterOrDigit(c)) < 6)
+                    {
+                        MessageBox.Show("Favor inserir Descrição do Material!!!!");
+                        return;
+                    }
+                    else
+                    {
+                        v_select = " C_DESMAT LIKE '" + txtDesMat.Text + "%' Order BY C_DESMAT DESC";
+                        SF_CM0100A.DataSource = cm0100bll.RetornarMaterialComboBox(v_select);
+                    }
+                }
+                if (rbPalavraChave.Checked == true)
+                {
+                    v_select = " C_CHAPES = '" + cbPalavraChave.Text + "' Order BY C_DESMAT DESC";
+                    SF_CM0100A.DataSource = cm0100bll.RetornarMaterialComboBox(v_select);
+                    if (cbPalavraChave.Text.Count(c => Char.IsLetterOrDigit(c)) < 2)
+                    {
+                        MessageBox.Show("Favor selecionar uma palavra chave para continuar!!!!");
+                        return;
+                    }
 
-                    throw ex;
                 }
             }
-
-            private void btnSair_Click(object sender, EventArgs e)
+            catch (Exception ex)
             {
-                this.Close();
+
+                throw ex;
             }
+        }
 
-            #endregion BUTTONS
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-            #region RADIO BUTTON EVENTS
+        #endregion BUTTONS
 
-            private void rbCodigo_Click(object sender, EventArgs e)
+        #region RADIO BUTTON EVENTS
+
+        private void rbCodigo_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
-                {
-                    rbCodigo.Checked = true;
-                    rbDescricao.Checked = false;
-                    rbPalavraChave.Checked = false;
+                rbCodigo.Checked = true;
+                rbDescricao.Checked = false;
+                rbPalavraChave.Checked = false;
 
-                    txtDesMat.Text = "";
-                    txtDesMat.ReadOnly = true;
-                    txtCodmat.ReadOnly = false;
-                    RetornarPalavraChave();
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
+                txtDesMat.Text = "";
+                txtDesMat.ReadOnly = true;
+                txtCodmat.ReadOnly = false;
+                RetornarPalavraChave();
             }
-
-
-            private void rbDescricao_Click(object sender, EventArgs e)
+            catch (Exception ex)
             {
-                try
-                {
-                    rbCodigo.Checked = false;
-                    rbDescricao.Checked = true;
-                    rbPalavraChave.Checked = false;
 
-                    txtCodmat.Text = "";
-                    txtCodmat.ReadOnly = true;
-                    txtDesMat.ReadOnly = false;
-                    RetornarPalavraChave();
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
-
+                throw ex;
             }
+        }
 
-            private void rbPalavraChave_Click(object sender, EventArgs e)
+        private void rbDescricao_Click(object sender, EventArgs e)
+        {
+            try
             {
-                try
-                {
-                    rbCodigo.Checked = false;
-                    rbDescricao.Checked = false;
-                    rbPalavraChave.Checked = true;
+                rbCodigo.Checked = false;
+                rbDescricao.Checked = true;
+                rbPalavraChave.Checked = false;
 
-                    txtCodmat.Text = "";
-                    txtCodmat.ReadOnly = true;
-                    txtDesMat.Text = "";
-                    txtDesMat.ReadOnly = true;
-                    RetornarPalavraChave();
-                }
-                catch (Exception ex)
-                {
-
-                    throw ex;
-                }
-
+                txtCodmat.Text = "";
+                txtCodmat.ReadOnly = true;
+                txtDesMat.ReadOnly = false;
+                RetornarPalavraChave();
             }
+            catch (Exception ex)
+            {
 
-            #endregion RADIO BUTTON EVENTS
+                throw ex;
+            }
 
         }
+
+        private void rbPalavraChave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                rbCodigo.Checked = false;
+                rbDescricao.Checked = false;
+                rbPalavraChave.Checked = true;
+
+                txtCodmat.Text = "";
+                txtCodmat.ReadOnly = true;
+                txtDesMat.Text = "";
+                txtDesMat.ReadOnly = true;
+                RetornarPalavraChave();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+        #endregion RADIO BUTTON EVENTS
+
     }
+}

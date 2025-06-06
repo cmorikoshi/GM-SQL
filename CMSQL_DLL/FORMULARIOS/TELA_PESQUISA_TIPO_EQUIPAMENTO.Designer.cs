@@ -131,7 +131,6 @@
             // 
             this.SF_TD0100B.AllowUserToAddRows = false;
             this.SF_TD0100B.AllowUserToDeleteRows = false;
-            this.SF_TD0100B.AllowUserToOrderColumns = true;
             this.SF_TD0100B.AllowUserToResizeColumns = false;
             this.SF_TD0100B.AllowUserToResizeRows = false;
             this.SF_TD0100B.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -140,10 +139,12 @@
             this.C_DESMAT});
             this.SF_TD0100B.Location = new System.Drawing.Point(12, 94);
             this.SF_TD0100B.Name = "SF_TD0100B";
+            this.SF_TD0100B.ReadOnly = true;
             this.SF_TD0100B.RowHeadersVisible = false;
             this.SF_TD0100B.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SF_TD0100B.Size = new System.Drawing.Size(421, 282);
             this.SF_TD0100B.TabIndex = 47;
+            this.SF_TD0100B.TabStop = false;
             // 
             // C_CODMAT
             // 
@@ -172,7 +173,7 @@
             this.MinimizeBox = false;
             this.Name = "TELA_PESQUISA_TIPO_EQUIPAMENTO";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pesquisa Tipo Equipamento";
+            this.Text = "Pesquisa Componente";
             this.Load += new System.EventHandler(this.TELA_PESQUISA_TIPO_EQUIPAMENTO_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

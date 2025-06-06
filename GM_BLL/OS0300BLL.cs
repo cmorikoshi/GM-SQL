@@ -48,7 +48,7 @@ namespace GM_BLL
 
         public DataTable RetornarOS0300LMC(string v_select)
         {
-            string Query = "SELECT C_NUMOSE, C_NOMRES, C_NOMOSE  FROM OS0300 WHERE " + v_select + " ";
+            string Query = "SELECT C_NUMOSE, C_NOMRES, C_NOMOSE  FROM OS0300 WHERE " + v_select + "";
 
             SqlCommand command = new SqlCommand(Query, GetConnection());
             SqlConnection connection = new SqlConnection();

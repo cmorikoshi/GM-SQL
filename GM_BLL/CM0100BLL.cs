@@ -414,7 +414,7 @@ namespace GM_BLL
 
         public DataTable RetornarDescricaoMaterialComboBox(string v_desmat)
         {
-            string Query = "SELECT C_DESMAT FROM CM0100 WHERE C_DESMAT LIKE '%" + v_desmat + "%'";
+            string Query = "SELECT C_DESMAT FROM CM0100 WHERE C_DESMAT LIKE '" + v_desmat + "%' AND SUBSTRING(C_DESMAT, 1, 10) != '(OBSOLETO)'";
             SqlCommand command = new SqlCommand(Query, GetConnection());
             SqlConnection connection = new SqlConnection();
 

@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.c_nomose = new System.Windows.Forms.TextBox();
@@ -55,16 +56,17 @@
             this.rbPorJOB = new System.Windows.Forms.RadioButton();
             this.rbPorOS = new System.Windows.Forms.RadioButton();
             this.SF_OS0300A = new System.Windows.Forms.DataGridView();
-            this.SF_OS0500B = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCancela = new System.Windows.Forms.Button();
-            this.btnImportaLista = new System.Windows.Forms.Button();
             this.C_NUMOSE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SF_OS0500B = new System.Windows.Forms.DataGridView();
+            this.btnCancela = new System.Windows.Forms.Button();
+            this.btnImportaLista = new System.Windows.Forms.Button();
+            this.C_CODEMP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_DESEMP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_UNIEMP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_QTDEMP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_CODEQU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SF_OS0300A)).BeginInit();
@@ -203,6 +205,7 @@
             this.c_numose1.ReadOnly = true;
             this.c_numose1.Size = new System.Drawing.Size(91, 20);
             this.c_numose1.TabIndex = 5;
+            this.c_numose1.TextChanged += new System.EventHandler(this.c_numose1_TextChanged);
             // 
             // label1
             // 
@@ -342,16 +345,42 @@
             this.Column3});
             this.SF_OS0300A.Location = new System.Drawing.Point(12, 105);
             this.SF_OS0300A.Name = "SF_OS0300A";
+            this.SF_OS0300A.ReadOnly = true;
             this.SF_OS0300A.RowHeadersVisible = false;
             this.SF_OS0300A.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SF_OS0300A.Size = new System.Drawing.Size(486, 145);
             this.SF_OS0300A.TabIndex = 142;
             this.SF_OS0300A.SelectionChanged += new System.EventHandler(this.SF_OS0300A_SelectionChanged);
             // 
+            // C_NUMOSE2
+            // 
+            this.C_NUMOSE2.DataPropertyName = "C_NUMOSE";
+            this.C_NUMOSE2.HeaderText = "OS";
+            this.C_NUMOSE2.Name = "C_NUMOSE2";
+            this.C_NUMOSE2.ReadOnly = true;
+            this.C_NUMOSE2.Width = 60;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "C_NOMRES";
+            this.Column2.HeaderText = "Cliente";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.DataPropertyName = "C_NOMOSE";
+            this.Column3.HeaderText = "Nome da OS";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
             // SF_OS0500B
             // 
             this.SF_OS0500B.AllowUserToAddRows = false;
             this.SF_OS0500B.AllowUserToDeleteRows = false;
+            this.SF_OS0500B.AllowUserToResizeColumns = false;
             this.SF_OS0500B.AllowUserToResizeRows = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -363,40 +392,18 @@
             this.SF_OS0500B.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.SF_OS0500B.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SF_OS0500B.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.Column4,
-            this.dataGridViewTextBoxColumn3});
+            this.C_CODEMP,
+            this.C_DESEMP,
+            this.C_UNIEMP,
+            this.C_QTDEMP,
+            this.C_CODEQU});
             this.SF_OS0500B.Location = new System.Drawing.Point(12, 256);
             this.SF_OS0500B.Name = "SF_OS0500B";
+            this.SF_OS0500B.ReadOnly = true;
             this.SF_OS0500B.RowHeadersVisible = false;
             this.SF_OS0500B.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SF_OS0500B.Size = new System.Drawing.Size(933, 196);
             this.SF_OS0500B.TabIndex = 143;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Código";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Descrição do Material";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "UM";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Quantidade";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 70;
             // 
             // btnCancela
             // 
@@ -432,27 +439,49 @@
             this.btnImportaLista.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImportaLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImportaLista.UseVisualStyleBackColor = true;
+            this.btnImportaLista.Click += new System.EventHandler(this.btnImportaLista_Click);
             // 
-            // C_NUMOSE2
+            // C_CODEMP
             // 
-            this.C_NUMOSE2.DataPropertyName = "C_NUMOSE";
-            this.C_NUMOSE2.HeaderText = "OS";
-            this.C_NUMOSE2.Name = "C_NUMOSE2";
-            this.C_NUMOSE2.Width = 60;
+            this.C_CODEMP.DataPropertyName = "C_CODEMP";
+            this.C_CODEMP.HeaderText = "Código";
+            this.C_CODEMP.Name = "C_CODEMP";
+            this.C_CODEMP.ReadOnly = true;
+            this.C_CODEMP.Width = 60;
             // 
-            // Column2
+            // C_DESEMP
             // 
-            this.Column2.DataPropertyName = "C_NOMRES";
-            this.Column2.HeaderText = "Cliente";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 150;
+            this.C_DESEMP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.C_DESEMP.DataPropertyName = "C_DESEMP";
+            this.C_DESEMP.HeaderText = "Descrição do Material";
+            this.C_DESEMP.Name = "C_DESEMP";
+            this.C_DESEMP.ReadOnly = true;
             // 
-            // Column3
+            // C_UNIEMP
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.DataPropertyName = "C_NOMOSE";
-            this.Column3.HeaderText = "Nome da OS";
-            this.Column3.Name = "Column3";
+            this.C_UNIEMP.DataPropertyName = "C_UNIEMP";
+            this.C_UNIEMP.HeaderText = "UM";
+            this.C_UNIEMP.Name = "C_UNIEMP";
+            this.C_UNIEMP.ReadOnly = true;
+            this.C_UNIEMP.Width = 50;
+            // 
+            // C_QTDEMP
+            // 
+            this.C_QTDEMP.DataPropertyName = "C_QTDEMP";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.C_QTDEMP.DefaultCellStyle = dataGridViewCellStyle3;
+            this.C_QTDEMP.HeaderText = "Quantidade";
+            this.C_QTDEMP.Name = "C_QTDEMP";
+            this.C_QTDEMP.ReadOnly = true;
+            this.C_QTDEMP.Width = 70;
+            // 
+            // C_CODEQU
+            // 
+            this.C_CODEQU.DataPropertyName = "C_CODEQU";
+            this.C_CODEQU.HeaderText = "C_CODEQU";
+            this.C_CODEQU.Name = "C_CODEQU";
+            this.C_CODEQU.ReadOnly = true;
+            this.C_CODEQU.Visible = false;
             // 
             // TELA_IMPORTACAO_OS_PRODUTO
             // 
@@ -506,10 +535,6 @@
         private System.Windows.Forms.RadioButton rbPorOS;
         private System.Windows.Forms.DataGridView SF_OS0300A;
         private System.Windows.Forms.DataGridView SF_OS0500B;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Button btnCancela;
         private System.Windows.Forms.Button btnImportaLista;
         private System.Windows.Forms.Label label9;
@@ -518,5 +543,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn C_NUMOSE2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_CODEMP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_DESEMP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_UNIEMP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_QTDEMP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_CODEQU;
     }
 }

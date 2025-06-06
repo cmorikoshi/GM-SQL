@@ -5,6 +5,7 @@ using System.Text;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace GM_BLL
 {
@@ -464,7 +465,6 @@ namespace GM_BLL
 
         }
 
-
         public static bool ValidaSenha(string v_senha)
         {
             Regex regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$");
@@ -497,6 +497,39 @@ namespace GM_BLL
                 return false;
             }
 
+        }
+
+        public static void FormatarCampoDecimal(TextBox textBox, EventHandler textChangedHandler)
+        {
+            textBox.TextChanged -= textChangedHandler;
+
+            try
+            {
+                string value = textBox.Text.Replace(",", "").Replace(".", "").TrimStart('0');
+
+                if(string.IsNullOrEmpty(value))
+                {
+                    textBox.Text = "0,00";
+                    textBox.Select(textBox.Text.Length, 0);
+                    return;
+                }
+                if(decimal.TryParse(value, out decimal result))
+                {
+                    result /= 100;
+                    textBox.Text = string.Format("{0:N2}", result);
+                    textBox.Select(textBox.Text.Length, 0);
+                }
+                else
+                {
+                    textBox.Text = "0,00";
+                    textBox.Select(textBox.Text.Length, 0);
+                }
+
+            }
+            finally
+            {
+               textBox.TextChanged += textChangedHandler;
+            }
         }
 
     }
